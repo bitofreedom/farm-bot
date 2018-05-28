@@ -4,7 +4,7 @@
 // miner ip and port, and the threshold you want to reboot it if it goes under:
 $IP=$1;
 $PORT="4028";
-$THRESHOLD=9000.0;
+$THRESHOLD=8000.0;
 
 // this works on a S9 12.93 circa Feb 2017. you shouldn't have to edit anything
 // below this line unless the api on yours has different commands / output.  If
