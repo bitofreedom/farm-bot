@@ -15,6 +15,7 @@ $FILE_PATH=$argv[1];
 if ($file = fopen("$FILE_PATH", "r")) {
     while(!feof($file)) {
         $line = fgets($file);
+        echo "Input Data: $line"
 		
 		// create a socket
 		$socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
