@@ -10,7 +10,9 @@ $THRESHOLD=8000.0;
 // below this line unless the api on yours has different commands / output.  If
 // it does let me know and I'll be happy to tweak it.
 
-if ($file = fopen("f$1", "r")) {
+$FILE_PATH=$argv[1];
+
+if ($file = fopen("$FILE_PATH", "r")) {
     while(!feof($file)) {
         $line = fgets($file);
 		
@@ -21,7 +23,7 @@ if ($file = fopen("f$1", "r")) {
 		}
 
 		// connect to antminer api
-		$result = socket_connect($socket, $IP, $PORT);
+		$result = socket_connect($socket, $line, $PORT);
 		if ($result === false) {
 		    echo "socket_connect() failed.\nReason: ($result) " . socket_strerror(socket_last_error($socket)) . "\n";
 		}
@@ -46,7 +48,7 @@ if ($file = fopen("f$1", "r")) {
 		// compare hashrate to threshold and reboot if it's too low
 		if ( $hashrate < $THRESHOLD ) {
 		  print "ERROR - LOW HASHRATE.  Rebooting Antminer.\n";
-		  system("ssh -i /root/.ssh/id_rsa root@".$IP." /sbin/reboot");
+		  system("ssh -i /root/.ssh/id_rsa root@".$line." /sbin/reboot");
 		  print "\n";
 		} else {
 		  print "Ok.\n";
