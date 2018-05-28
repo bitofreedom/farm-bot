@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 
 # Parameters:
 # IP List (file path)

@@ -2,7 +2,7 @@
 <?php
 
 // miner ip and port, and the threshold you want to reboot it if it goes under:
-$IP="192.168.1.81";
+$IP=$1;
 $PORT="4028";
 $THRESHOLD=9000.0;
 
