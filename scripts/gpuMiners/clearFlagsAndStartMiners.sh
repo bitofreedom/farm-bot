@@ -7,10 +7,7 @@
 IFS=$'\n'       # make newlines the only separator
 set -f          # disable globbing
 for i in $(cat < "$1"); do
-  echo "Sending .ssh/id_rsa.pub to Host: $i"
-  ssh $2@$i 'mkdir -p .ssh'
-  cat .ssh/id_rsa.pub | ssh $2@$i 'cat >> .ssh/authorized_keys'
-  ssh $2@$i 'chmod 700 .ssh; chmod 640 .ssh/authorized_keys'
+  echo "Starting miner on host: $i"
+  ssh $2@$i 'cd /home/ethos && clear-thermals && sleep 2 && allow'
 done
-
 echo "Script Ends..."
