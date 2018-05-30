@@ -8,6 +8,6 @@ IFS=$'\n'       # make newlines the only separator
 set -f          # disable globbing
 for i in $(cat < "$1"); do
   echo "Starting miner on host: $i"
-  ssh $2@$i 'cd /home/ethos && clear-thermals && sleep 2 && allow'
+  ssh -oStrictHostKeyChecking=no host $2@$i 'cd /home/ethos && clear-thermals && sleep 2 && allow'
 done
 echo "Script Ends..."
